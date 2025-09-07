@@ -62,7 +62,6 @@ public class LoginStepDefs {
         }
 
 
-
         @When("user enters usermane for advisor")
         public void user_enters_usermane_for_advisor() {
 

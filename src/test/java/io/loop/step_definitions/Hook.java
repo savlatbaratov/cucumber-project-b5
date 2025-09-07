@@ -9,26 +9,24 @@ import org.openqa.selenium.TakesScreenshot;
 public class Hook {
 
     @Before
-    public void setUp(Scenario scenario) {
+    public void setUp(Scenario scenario){
         Driver.getDriver();
         BrowserUtils.myScenario = scenario;
-
-
     }
 
     @After
-    public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
+    public void tearDown(Scenario scenario){
+        //  only takes screenshot when scenario is failed
+        if (scenario.isFailed()){
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
-//        Driver.getDriver().quit();
-
+        Driver.closeDriver();
     }
-//    @AfterStep
-    public void takeScreenshot(Scenario scenario) {
+
+    //@AfterStep
+    public void takeScreenshot(Scenario scenario){
         final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
         scenario.attach(screenshot, "image/png", scenario.getName());
     }
-
 }

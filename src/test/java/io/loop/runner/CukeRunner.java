@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "io/loop/step_definitions",
         dryRun = false,
-        tags = "@smoke",
+        tags = "@google_search_data_table",
         monochrome = true
 
 )
