@@ -97,7 +97,7 @@ public class BrowserUtils {
      * @param element
      * @param timeout
      * @return element
-     * @author nsh
+     * @author SB
      */
     public static WebElement waitForClickable(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
@@ -108,11 +108,11 @@ public class BrowserUtils {
      * waits for provided element to be invisible on the page
      *
      * @param element
-     * @param timeaout
+     * @param timeout
      * @author nsh
      */
-    public static void waitForInvisibility(WebElement element, int timeaout) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeaout));
+    public static void waitForInvisibility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
