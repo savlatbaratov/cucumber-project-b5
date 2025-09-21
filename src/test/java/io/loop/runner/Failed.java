@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         monochrome = true,
         publish = false
 )
-public class FailedRunner {
+public class Failed {
 
 
 
