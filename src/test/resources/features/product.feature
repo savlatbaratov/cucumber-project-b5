@@ -1,7 +1,7 @@
 Feature: product data table practice
 
 
-  @listOfMap
+  @listOfMap @smoke
   Scenario: verify each product price
 
     Given User is on the HomePage
@@ -34,7 +34,7 @@ Feature: product data table practice
       #  {Category=Monitors, Product=ASUS Full HD, expectedPrice=230}
 
 
-  @listOfLists
+  @listOfLists @smoke
   # practice List<List<String>>
   Scenario: verify each product price ListofList
     Given User is on the HomePage
@@ -49,14 +49,14 @@ Feature: product data table practice
       | Monitors | ASUS Full HD      | 230 |
 
 
-  @mapList
+  @mapList @smoke
   # Map<String , List<String>>
   Scenario: verigy student names
     Then user should be able to see the names
       | Group 2 | nadir | feyrus | Jane   |
       | Group 3 | vika  | suidim | savlat |
 
-  @mapListProduct
+  @mapListProduct @smoke
   Scenario: verify each product price map
     Given User is on the HomePage
     Then User should be able to see expected prices in the following products with map
