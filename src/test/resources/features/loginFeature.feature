@@ -6,7 +6,7 @@ Feature: Docuport Login Logout Feature
   @smoke
   Scenario: Login as a client
     #Given user is on Docuport login page
-    When user enters usermane for client
+    When user enters username for client
     And user enters password for client
     And user clicks login button
     Then user should be able to see the home page for client
@@ -14,7 +14,7 @@ Feature: Docuport Login Logout Feature
   @smoke
   Scenario: Login as a employee
     #Given user is on Docuport login page
-    When user enters usermane for employee
+    When user enters username for employee
     And user enters password for employee
     And user clicks login button
     Then user should be able to see the home page for employee
@@ -22,7 +22,7 @@ Feature: Docuport Login Logout Feature
   @smoke
   Scenario: Login as a advisor
    # Given user is on Docuport login page
-    When user enters usermane for advisor
+    When user enters username for advisor
     And user enters password for advisor
     And user clicks login button
     Then user should be able to see the home page for advisor
@@ -30,7 +30,7 @@ Feature: Docuport Login Logout Feature
   @smoke
   Scenario: Login as a supervisor
    # Given user is on Docuport login page
-    When user enters usermane for supervisor
+    When user enters username for supervisor
     And user enters password for supervisor
     And user clicks login button
     Then user should be able to see the home page for supervisor

@@ -24,8 +24,8 @@ public class LoginStepDefs {
         Driver.getDriver().get(ConfigurationReader.getProperties("docuportBETA"));
 
     }
-    @When("user enters usermane for client")
-    public void user_enters_usermane_for_client() {
+    @When("user enters username for client")
+    public void user_enters_username_for_client() {
         BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
         assertTrue(loginPage.loginButton.isDisplayed());
         loginPage.userNameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
@@ -50,8 +50,8 @@ public class LoginStepDefs {
         assertTrue("Home page is not loaded", homePage.logo.isDisplayed());
     }
 
-        @When("user enters usermane for employee")
-        public void user_enters_usermane_for_employee() {
+        @When("user enters username for employee")
+        public void user_enters_username_for_employee() {
 
         }
         @When("user enters password for employee")
@@ -64,8 +64,8 @@ public class LoginStepDefs {
         }
 
 
-        @When("user enters usermane for advisor")
-        public void user_enters_usermane_for_advisor() {
+        @When("user enters username for advisor")
+        public void user_enters_username_for_advisor() {
 
         }
         @When("user enters password for advisor")
@@ -78,8 +78,8 @@ public class LoginStepDefs {
         }
 
 
-        @When("user enters usermane for supervisor")
-        public void user_enters_usermane_for_supervisor() {
+        @When("user enters username for supervisor")
+        public void user_enters_username_for_supervisor() {
 
         }
         @When("user enters password for supervisor")
