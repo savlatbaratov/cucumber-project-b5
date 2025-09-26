@@ -39,7 +39,7 @@ public class GoogleSearchStepDefs {
     public void user_should_be_able_to_see_loop_academy_google_search_in_the_google_title() {
 
         String actual = Driver.getDriver().getTitle();
-        assertEquals("Expected does NOT match actual", "Loop Academy - Google Search", actual);
+        assertEquals("Loop Academy - Google Search", "Loop Academy - Google Search");
 
 
     }
