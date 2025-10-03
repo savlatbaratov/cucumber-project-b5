@@ -8,6 +8,8 @@ public class POM {
     private ProductPage productPage;
     private ReceivedDocsPage receivedDocsPage;
     private LeftNavigatePage leftNavigatePage;
+    private MyUploadsPage myUploadsPage;
+
 
     public LoginPage getLoginPage() {
         if (loginPage == null) {
@@ -48,6 +50,12 @@ public class POM {
             leftNavigatePage = new LeftNavigatePage();
         }
         return leftNavigatePage;
+    }
+    public MyUploadsPage getMyUploadsPage() {
+        if (myUploadsPage == null) {
+            myUploadsPage = new MyUploadsPage();
+        }
+        return myUploadsPage;
     }
 
 }

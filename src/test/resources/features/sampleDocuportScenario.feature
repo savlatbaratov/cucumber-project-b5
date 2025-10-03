@@ -17,3 +17,4 @@ Feature: Docuport Sample Scenario
     And user clicks "My uploads" button on "Left Navigate" page
     And user clicks "Upload Documents" button on "My uploads" page
     And user clicks "Upload file" button on "My uploads" page
+    And user uploads a document
