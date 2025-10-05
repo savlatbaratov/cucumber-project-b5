@@ -2,6 +2,7 @@ package io.loop.utilities;
 
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -94,6 +95,7 @@ public class BrowserUtils {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
+
     /**
      * waits for the provided element to be clickable
      *
@@ -105,6 +107,15 @@ public class BrowserUtils {
     public static WebElement waitForClickable(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+    public static WebElement waitForClickable2(WebElement element, int timeout){
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (StaleElementReferenceException se){
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        }
     }
 
     /**
@@ -206,5 +217,44 @@ public class BrowserUtils {
         String[] command = { "osascript", "-e", script };
         Runtime.getRuntime().exec(command);
     }
+
+    /**
+     * Moves the mouse to given element
+     * @param element to hover over
+     * @author SB
+     *
+     */
+
+    public static void hover (WebElement element) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).perform();
+
+    }
+    /**
+     * Scrolls down to an element using Javascript
+     * @param element
+     * @author SB
+     */
+
+    public static void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+
+    }
+    /**
+     * click on element using Javascript
+     * @param element
+     * @author SB
+     */
+
+    public static void clickWithJS(WebElement element){
+        try {
+            new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
+            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+        } catch (StaleElementReferenceException se) {
+            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+        }
+    }
+
 
 }
