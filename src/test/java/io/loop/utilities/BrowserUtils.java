@@ -2,6 +2,7 @@ package io.loop.utilities;
 
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -9,7 +10,10 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 
@@ -94,6 +98,7 @@ public class BrowserUtils {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
+
     /**
      * waits for the provided element to be clickable
      *
@@ -105,6 +110,15 @@ public class BrowserUtils {
     public static WebElement waitForClickable(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+    public static WebElement waitForClickable2(WebElement element, int timeout){
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (StaleElementReferenceException se){
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        }
     }
 
     /**
@@ -205,6 +219,91 @@ public class BrowserUtils {
 
         String[] command = { "osascript", "-e", script };
         Runtime.getRuntime().exec(command);
+    }
+
+    /**
+     * Moves the mouse to given element
+     * @param element to hover over
+     * @author SB
+     *
+     */
+
+    public static void hover (WebElement element) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).perform();
+
+    }
+    /**
+     * Scrolls down to an element using Javascript
+     * @param element
+     * @author SB
+     */
+
+    public static void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+
+    }
+    /**
+     * click on element using Javascript
+     * @param element
+     * @author SB
+     */
+
+    public static void clickWithJS(WebElement element){
+        try {
+            new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
+            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+        } catch (StaleElementReferenceException se) {
+            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+        }
+    }
+
+    /**
+     * performs double click action
+     * @param element
+     * @author SB
+     */
+
+    public static void doubleClick(WebElement element) {
+        new Actions(Driver.getDriver()).doubleClick().perform();
+
+    }
+
+
+    /**
+     * performs a pause
+     * @param milliSeconds
+     * @author SB
+     */
+
+    public static void justWait(int milliSeconds) {
+        try {
+            Thread.sleep(milliSeconds);
+        } catch (InterruptedException i) {
+            i.printStackTrace();
+
+        }
+    }
+
+    public static List<String> getElementText(List<WebElement> elements) {
+        List<String> elementText = new ArrayList<>();
+        for (WebElement element : elements) {
+            elementText.add(element.getText());
+
+        }
+        return elementText;
+    }
+
+    public static List<String> getElementTextWithString(List<WebElement> elements) {
+        return elements.stream()
+                .map(x->x.getText())
+                .collect(Collectors.toList());
+    }
+    public static List<String> getElementTextWithString2(List<WebElement> elements) {
+        return elements.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 
 }

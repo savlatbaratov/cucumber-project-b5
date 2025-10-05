@@ -47,6 +47,8 @@ public class SampleDocuportStepDefs {
             case "login" , "choose account" ->
                     pages.getLoginPage().clickButton(button);
 
+
+
             case "left navigate" -> pages.getLeftNavigatePage().clickButton(button);
             case "received doc" -> pages.getReceivedDocsPage().clickButton(button);
             case "my uploads" -> {
