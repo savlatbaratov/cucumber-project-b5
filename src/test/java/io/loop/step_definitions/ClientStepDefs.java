@@ -27,14 +27,16 @@ public class ClientStepDefs {
         switch (text.toLowerCase().trim()) {
 
             case "login" -> {
-                actual = pages.getLoginPage().loginText.getText().toLowerCase().trim();
+              //  actual = pages.getLoginPage().loginText.getText().toLowerCase().trim();
                 expected = text.toLowerCase().trim();
+                actual = "Feyruz";
                 softAssertions.assertThat(actual).isEqualTo(expected);
                 LOG.info(text + " is displayed");
 
             }
             case "docuport"-> {
-                actual = pages.getLoginPage().docuportText.getAttribute("alt").trim().toLowerCase().trim();
+               // actual = pages.getLoginPage().docuportText.getAttribute("alt").trim().toLowerCase().trim();
+                actual = "Nadir";
                 expected = text.toLowerCase().trim();
                 softAssertions.assertThat(actual).isEqualTo(expected);
                 LOG.info(text + " is displayed");
@@ -58,6 +60,7 @@ public class ClientStepDefs {
 
     @When("user validates all assertions")
     public void user_validates_all_assertions() {
+        softAssertions.assertAll();
 
     }
 }
