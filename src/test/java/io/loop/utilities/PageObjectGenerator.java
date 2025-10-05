@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class PageObjectGenerator {
+//public class PageObjectGenerator {
 
 //    public static void main(String[] args) throws IOException {
 //
